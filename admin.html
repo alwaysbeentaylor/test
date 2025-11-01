@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hope Connects - Admin Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #0A0E27;
+            color: #FFFFFF;
+            padding: 2rem;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid #1A1D3A;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #FFD700;
+            letter-spacing: 2px;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #1A1D3A 0%, #0A0E27 100%);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            border-color: #00D9FF;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 217, 255, 0.2);
+        }
+
+        .stat-label {
+            color: #A0A0A0;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #00D9FF 0%, #FFD700 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .filters {
+            background: #1A1D3A;
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .filter-btn {
+            padding: 0.7rem 1.5rem;
+            background: #0A0E27;
+            border: 2px solid transparent;
+            border-radius: 50px;
+            color: #A0A0A0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            border-color: #00D9FF;
+            color: #FFFFFF;
+            background: rgba(0, 217, 255, 0.1);
+        }
+
+        .export-btn {
+            padding: 0.7rem 1.5rem;
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            border: none;
+            border-radius: 50px;
+            color: #0A0E27;
+            font-weight: 700;
+            cursor: pointer;
+            margin-left: auto;
+            transition: all 0.3s ease;
+        }
+
+        .export-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
+        }
+
+        .leads-table {
+            background: #1A1D3A;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        thead {
+            background: #0A0E27;
+        }
+
+        th {
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            color: #A0A0A0;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        td {
+            padding: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        tbody tr {
+            transition: all 0.3s ease;
+        }
+
+        tbody tr:hover {
+            background: rgba(0, 217, 255, 0.05);
+        }
+
+        .score {
+            color: #FFD700;
+            font-size: 1.2rem;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .badge-high {
+            background: rgba(255, 215, 0, 0.2);
+            color: #FFD700;
+        }
+
+        .badge-medium {
+            background: rgba(0, 217, 255, 0.2);
+            color: #00D9FF;
+        }
+
+        .badge-low {
+            background: rgba(160, 160, 160, 0.2);
+            color: #A0A0A0;
+        }
+
+        .badge-urgent {
+            background: rgba(255, 69, 0, 0.2);
+            color: #FF4500;
+        }
+
+        .actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .action-btn {
+            padding: 0.4rem 0.8rem;
+            border: 1px solid #00D9FF;
+            background: transparent;
+            color: #00D9FF;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .action-btn:hover {
+            background: rgba(0, 217, 255, 0.1);
+        }
+
+        .action-btn.sold {
+            border-color: #4CAF50;
+            color: #4CAF50;
+        }
+
+        .sold-indicator {
+            color: #4CAF50;
+            font-weight: 600;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: #A0A0A0;
+        }
+
+        .empty-state h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .filters {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .export-btn {
+                margin-left: 0;
+            }
+
+            table {
+                font-size: 0.85rem;
+            }
+
+            th, td {
+                padding: 0.7rem 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">HOPE CONNECTS ADMIN</div>
+        <div style="color: #A0A0A0;">Dashboard</div>
+    </div>
+
+    <div class="stats">
+        <div class="stat-card">
+            <div class="stat-label">Totaal Leads</div>
+            <div class="stat-value" id="totalLeads">0</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">5-Sterren Leads</div>
+            <div class="stat-value" id="fiveStarLeads">0</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">Verkocht</div>
+            <div class="stat-value" id="soldLeads">0</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">Potentiële Waarde</div>
+            <div class="stat-value" id="totalValue">€0</div>
+        </div>
+    </div>
+
+    <div class="filters">
+        <button class="filter-btn active" onclick="filterLeads('all')">Alle</button>
+        <button class="filter-btn" onclick="filterLeads('5-star')">⭐⭐⭐⭐⭐</button>
+        <button class="filter-btn" onclick="filterLeads('4-star')">⭐⭐⭐⭐</button>
+        <button class="filter-btn" onclick="filterLeads('urgent')">Urgent</button>
+        <button class="filter-btn" onclick="filterLeads('unsold')">Niet verkocht</button>
+        <button class="export-btn" onclick="exportToCSV()">📥 Export CSV</button>
+    </div>
+
+    <div class="leads-table">
+        <table>
+            <thead>
+                <tr>
+                    <th>Score</th>
+                    <th>Naam</th>
+                    <th>Contact</th>
+                    <th>Project</th>
+                    <th>Budget</th>
+                    <th>Timing</th>
+                    <th>Datum</th>
+                    <th>Status</th>
+                    <th>Acties</th>
+                </tr>
+            </thead>
+            <tbody id="leadsBody">
+                <!-- Leads will be inserted here -->
+            </tbody>
+        </table>
+        <div class="empty-state" id="emptyState">
+            <h3>Nog geen leads</h3>
+            <p>Leads verschijnen hier zodra iemand het formulier invult</p>
+        </div>
+    </div>
+
+    <script>
+        // Mock data for demonstration (in production, this comes from your database)
+        let leads = [
+            {
+                id: 1,
+                name: "Jan Vermeulen",
+                email: "jan@example.com",
+                phone: "+32 50 123 456",
+                postcode: "8000",
+                project_type: "renovatie",
+                budget: "50k+",
+                timing: "deze-maand",
+                score: 5,
+                timestamp: new Date('2025-11-01T10:30:00'),
+                sold: false
+            },
+            {
+                id: 2,
+                name: "Sara De Wilde",
+                email: "sara@example.com",
+                phone: "+32 50 234 567",
+                postcode: "8200",
+                project_type: "keuken",
+                budget: "25-50k",
+                timing: "1-3-maanden",
+                score: 4,
+                timestamp: new Date('2025-11-01T11:15:00'),
+                sold: false
+            },
+            {
+                id: 3,
+                name: "Kevin Jacobs",
+                email: "kevin@example.com",
+                phone: "+32 50 345 678",
+                postcode: "8310",
+                project_type: "badkamer",
+                budget: "10-25k",
+                timing: "deze-maand",
+                score: 3,
+                timestamp: new Date('2025-11-01T14:20:00'),
+                sold: false
+            },
+            {
+                id: 4,
+                name: "Marie Dupont",
+                email: "marie@example.com",
+                phone: "+32 50 456 789",
+                postcode: "8000",
+                project_type: "aanbouw",
+                budget: "50k+",
+                timing: "deze-maand",
+                score: 5,
+                timestamp: new Date('2025-11-01T15:45:00'),
+                sold: true
+            }
+        ];
+
+        let currentFilter = 'all';
+
+        function renderLeads(filteredLeads = leads) {
+            const tbody = document.getElementById('leadsBody');
+            const emptyState = document.getElementById('emptyState');
+
+            if (filteredLeads.length === 0) {
+                tbody.innerHTML = '';
+                emptyState.style.display = 'block';
+                return;
+            }
+
+            emptyState.style.display = 'none';
+
+            tbody.innerHTML = filteredLeads.map(lead => {
+                const stars = '⭐'.repeat(lead.score);
+                const budgetBadge = lead.budget === '50k+' ? 'badge-high' : 
+                                   lead.budget === '25-50k' ? 'badge-medium' : 'badge-low';
+                const urgentBadge = lead.timing === 'deze-maand' ? '<span class="badge badge-urgent">URGENT</span>' : '';
+                const soldClass = lead.sold ? 'sold-indicator' : '';
+                const soldText = lead.sold ? '✓ Verkocht' : '';
+
+                return `
+                    <tr data-id="${lead.id}" data-score="${lead.score}" data-timing="${lead.timing}" data-sold="${lead.sold}">
+                        <td class="score">${stars}</td>
+                        <td><strong>${lead.name}</strong></td>
+                        <td>
+                            ${lead.email}<br>
+                            <small style="color: #A0A0A0;">${lead.phone}</small>
+                        </td>
+                        <td>
+                            ${lead.project_type}<br>
+                            <small style="color: #A0A0A0;">${lead.postcode}</small>
+                        </td>
+                        <td><span class="badge ${budgetBadge}">${lead.budget}</span></td>
+                        <td>${urgentBadge || lead.timing}</td>
+                        <td><small style="color: #A0A0A0;">${formatDate(lead.timestamp)}</small></td>
+                        <td class="${soldClass}">${soldText}</td>
+                        <td class="actions">
+                            ${!lead.sold ? `
+                                <button class="action-btn" onclick="viewLead(${lead.id})">View</button>
+                                <button class="action-btn sold" onclick="markAsSold(${lead.id})">Verkocht</button>
+                            ` : `
+                                <button class="action-btn" onclick="viewLead(${lead.id})">View</button>
+                            `}
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+
+            updateStats();
+        }
+
+        function updateStats() {
+            const total = leads.length;
+            const fiveStar = leads.filter(l => l.score === 5).length;
+            const sold = leads.filter(l => l.sold).length;
+            
+            // Calculate potential value (€150 per 5-star, €100 per 4-star, €50 per 3-star)
+            const value = leads.filter(l => !l.sold).reduce((sum, lead) => {
+                if (lead.score === 5) return sum + 150;
+                if (lead.score === 4) return sum + 100;
+                if (lead.score === 3) return sum + 50;
+                return sum + 30;
+            }, 0);
+
+            document.getElementById('totalLeads').textContent = total;
+            document.getElementById('fiveStarLeads').textContent = fiveStar;
+            document.getElementById('soldLeads').textContent = sold;
+            document.getElementById('totalValue').textContent = '€' + value;
+        }
+
+        function filterLeads(filter) {
+            currentFilter = filter;
+            
+            // Update active button
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            let filtered = leads;
+
+            switch(filter) {
+                case '5-star':
+                    filtered = leads.filter(l => l.score === 5);
+                    break;
+                case '4-star':
+                    filtered = leads.filter(l => l.score === 4);
+                    break;
+                case 'urgent':
+                    filtered = leads.filter(l => l.timing === 'deze-maand');
+                    break;
+                case 'unsold':
+                    filtered = leads.filter(l => !l.sold);
+                    break;
+            }
+
+            renderLeads(filtered);
+        }
+
+        function markAsSold(id) {
+            const lead = leads.find(l => l.id === id);
+            if (lead) {
+                lead.sold = true;
+                renderLeads(currentFilter === 'all' ? leads : leads.filter(l => filterMatch(l)));
+            }
+        }
+
+        function viewLead(id) {
+            const lead = leads.find(l => l.id === id);
+            if (lead) {
+                alert(`Lead Details:\n\n` +
+                      `Naam: ${lead.name}\n` +
+                      `Email: ${lead.email}\n` +
+                      `Telefoon: ${lead.phone}\n` +
+                      `Postcode: ${lead.postcode}\n` +
+                      `Project: ${lead.project_type}\n` +
+                      `Budget: ${lead.budget}\n` +
+                      `Timing: ${lead.timing}\n` +
+                      `Score: ${lead.score} sterren\n` +
+                      `Status: ${lead.sold ? 'Verkocht' : 'Beschikbaar'}`);
+            }
+        }
+
+        function exportToCSV() {
+            const csv = [
+                ['Score', 'Naam', 'Email', 'Telefoon', 'Postcode', 'Project', 'Budget', 'Timing', 'Datum', 'Verkocht'],
+                ...leads.map(lead => [
+                    lead.score,
+                    lead.name,
+                    lead.email,
+                    lead.phone,
+                    lead.postcode,
+                    lead.project_type,
+                    lead.budget,
+                    lead.timing,
+                    formatDate(lead.timestamp),
+                    lead.sold ? 'Ja' : 'Nee'
+                ])
+            ].map(row => row.join(',')).join('\n');
+
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `hope-connects-leads-${new Date().toISOString().split('T')[0]}.csv`;
+            a.click();
+        }
+
+        function formatDate(date) {
+            return new Intl.DateTimeFormat('nl-NL', {
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            }).format(date);
+        }
+
+        // Initial render
+        renderLeads();
+    </script>
+</body>
+</html>

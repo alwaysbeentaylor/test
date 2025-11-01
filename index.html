@@ -1,0 +1,1592 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hope Connects - Premium Verbouwingen Brugge</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-dark: #0A0E27;
+            --secondary-dark: #1A1D3A;
+            --gold: #D4AF37;
+            --gold-light: #F4E4B5;
+            --orange: #FF8C42;
+            --white: #FFFFFF;
+            --gray: #A0A0A0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--primary-dark);
+            color: var(--white);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(10, 14, 39, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .logo-nav {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--orange) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-cta {
+            padding: 0.8rem 2rem;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--orange) 100%);
+            border: none;
+            border-radius: 50px;
+            color: var(--primary-dark);
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.3);
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(212, 175, 55, 0.5);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8rem 5% 4rem;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, #0A0E27 0%, #1A1D3A 50%, #2A2D4A 100%);
+            z-index: 0;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(212, 175, 55, 0.15) 0%, transparent 70%);
+            z-index: 1;
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.1); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1400px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: clamp(3rem, 7vw, 5.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--white) 0%, var(--gold-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-text p {
+            font-size: 1.3rem;
+            color: var(--gray);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            padding: 1.2rem 3rem;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--orange) 100%);
+            border: none;
+            border-radius: 50px;
+            color: var(--primary-dark);
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 10px 40px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(212, 175, 55, 0.5);
+        }
+
+        .btn-secondary {
+            padding: 1.2rem 3rem;
+            background: transparent;
+            border: 2px solid var(--gold);
+            border-radius: 50px;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(212, 175, 55, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--gold);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        /* Trust Badges */
+        .trust-badges {
+            background: var(--secondary-dark);
+            padding: 3rem 5%;
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            flex-wrap: wrap;
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .badge {
+            text-align: center;
+        }
+
+        .badge-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .badge-text {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        /* Process Section */
+        .process-section {
+            padding: 8rem 5%;
+            background: linear-gradient(180deg, var(--primary-dark) 0%, var(--secondary-dark) 100%);
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 5rem;
+        }
+
+        .section-subtitle {
+            font-size: 0.9rem;
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .section-description {
+            font-size: 1.2rem;
+            color: var(--gray);
+            line-height: 1.8;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .process-card {
+            background: var(--primary-dark);
+            border: 2px solid transparent;
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .process-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.05) 0%, rgba(255, 140, 66, 0.05) 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .process-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.2);
+        }
+
+        .process-card:hover::before {
+            opacity: 1;
+        }
+
+        .process-number {
+            font-size: 4rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--orange) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .process-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.2) 0%, rgba(255, 140, 66, 0.2) 100%);
+            border-radius: 15px;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            transition: all 0.4s ease;
+        }
+
+        .process-card:hover .process-image {
+            transform: scale(1.05);
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.3) 0%, rgba(255, 140, 66, 0.3) 100%);
+        }
+
+        .process-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .process-description {
+            color: var(--gray);
+            line-height: 1.6;
+            position: relative;
+        }
+
+        /* Portfolio Section */
+        .portfolio-section {
+            padding: 8rem 5%;
+            background: var(--primary-dark);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 3rem auto 0;
+        }
+
+        .portfolio-item {
+            background: var(--secondary-dark);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 2px solid transparent;
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+
+        .portfolio-item:hover {
+            border-color: var(--gold);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.2);
+        }
+
+        .portfolio-images {
+            position: relative;
+            height: 400px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .before-after {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(255, 140, 66, 0.15) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+
+        .before-after.before {
+            background: linear-gradient(135deg, rgba(160, 160, 160, 0.2) 0%, rgba(100, 100, 100, 0.2) 100%);
+        }
+
+        .before-after.after {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.3) 0%, rgba(255, 140, 66, 0.3) 100%);
+        }
+
+        .before-label, .after-label {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 0.5rem 1rem;
+            background: rgba(10, 14, 39, 0.9);
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        .before-label {
+            color: var(--gray);
+        }
+
+        .after-label {
+            color: var(--gold);
+        }
+
+        .portfolio-info {
+            padding: 2rem;
+        }
+
+        .portfolio-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .portfolio-details {
+            color: var(--gray);
+            margin-bottom: 1rem;
+        }
+
+        .portfolio-price {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--gold);
+        }
+
+        /* Testimonials */
+        .testimonials-section {
+            padding: 8rem 5%;
+            background: var(--secondary-dark);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 3rem auto 0;
+        }
+
+        .testimonial-card {
+            background: var(--primary-dark);
+            border: 2px solid transparent;
+            border-radius: 20px;
+            padding: 2.5rem;
+            transition: all 0.4s ease;
+        }
+
+        .testimonial-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.15);
+        }
+
+        .stars {
+            color: var(--gold);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonial-text {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--gray);
+            margin-bottom: 2rem;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--primary-dark);
+        }
+
+        .author-info {
+            flex: 1;
+        }
+
+        .author-name {
+            font-weight: 700;
+            margin-bottom: 0.2rem;
+        }
+
+        .author-project {
+            font-size: 0.85rem;
+            color: var(--gray);
+        }
+
+        /* USP Section */
+        .usp-section {
+            padding: 8rem 5%;
+            background: var(--primary-dark);
+        }
+
+        .usp-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 3rem auto 0;
+        }
+
+        .usp-card {
+            text-align: center;
+            padding: 2rem;
+            background: var(--secondary-dark);
+            border-radius: 20px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .usp-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-5px);
+        }
+
+        .usp-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .usp-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .usp-description {
+            font-size: 0.9rem;
+            color: var(--gray);
+            line-height: 1.6;
+        }
+
+        /* Form Section */
+        .form-section {
+            padding: 8rem 5%;
+            background: linear-gradient(135deg, var(--secondary-dark) 0%, var(--primary-dark) 100%);
+        }
+
+        .form-container {
+            max-width: 900px;
+            margin: 3rem auto 0;
+            background: var(--primary-dark);
+            border: 2px solid rgba(212, 175, 55, 0.2);
+            border-radius: 30px;
+            padding: 4rem;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+        }
+
+        .form-step {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .form-step.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .progress-container {
+            margin-bottom: 3rem;
+        }
+
+        .progress-steps {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        .progress-step {
+            font-size: 0.85rem;
+            color: var(--gray);
+            font-weight: 600;
+        }
+
+        .progress-step.active {
+            color: var(--gold);
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: var(--secondary-dark);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--gold) 0%, var(--orange) 100%);
+            transition: width 0.5s ease;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+        }
+
+        .question-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 2.5rem;
+            text-align: center;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .option-card {
+            background: var(--secondary-dark);
+            border: 2px solid transparent;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .option-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(255, 140, 66, 0.1) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .option-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.2);
+        }
+
+        .option-card:hover::before {
+            opacity: 1;
+        }
+
+        .option-card.selected {
+            border-color: var(--gold);
+            background: rgba(212, 175, 55, 0.1);
+        }
+
+        .option-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .option-label {
+            font-size: 1.2rem;
+            font-weight: 600;
+            position: relative;
+        }
+
+        /* Budget Slider */
+        .slider-container {
+            padding: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .budget-display {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        #budgetValue {
+            font-size: 4rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--orange) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .budget-slider {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 8px;
+            background: linear-gradient(90deg, var(--secondary-dark) 0%, var(--gold) 50%, var(--orange) 100%);
+            outline: none;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+        }
+
+        .budget-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--orange) 100%);
+            cursor: pointer;
+            border-radius: 50%;
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.8);
+            transition: all 0.3s ease;
+        }
+
+        .budget-slider::-webkit-slider-thumb:hover {
+            transform: scale(1.3);
+            box-shadow: 0 0 40px rgba(212, 175, 55, 1);
+        }
+
+        .budget-slider::-moz-range-thumb {
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--orange) 100%);
+            cursor: pointer;
+            border-radius: 50%;
+            border: none;
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.8);
+            transition: all 0.3s ease;
+        }
+
+        .budget-slider::-moz-range-thumb:hover {
+            transform: scale(1.3);
+            box-shadow: 0 0 40px rgba(212, 175, 55, 1);
+        }
+
+        .slider-labels {
+            display: flex;
+            justify-content: space-between;
+            color: var(--gray);
+            font-size: 0.85rem;
+        }
+
+        .slider-labels span {
+            text-align: center;
+            flex: 1;
+        }
+
+        .input-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 0.7rem;
+            color: var(--gray);
+            font-weight: 600;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 1.2rem;
+            background: var(--secondary-dark);
+            border: 2px solid transparent;
+            border-radius: 10px;
+            color: var(--white);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+        }
+
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 3rem;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-back {
+            background: transparent;
+            color: var(--gray);
+            border: 2px solid var(--secondary-dark);
+        }
+
+        .btn-back:hover {
+            border-color: var(--gold);
+            color: var(--white);
+        }
+
+        .btn-next {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--orange) 100%);
+            color: var(--primary-dark);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-next:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.5);
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 8rem 5%;
+            background: var(--secondary-dark);
+        }
+
+        .faq-container {
+            max-width: 900px;
+            margin: 3rem auto 0;
+        }
+
+        .faq-item {
+            background: var(--primary-dark);
+            border: 2px solid transparent;
+            border-radius: 15px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: var(--gold);
+        }
+
+        .faq-question {
+            padding: 1.5rem 2rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .faq-icon {
+            color: var(--gold);
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+        }
+
+        .faq-answer-content {
+            padding: 0 2rem 1.5rem 2rem;
+            color: var(--gray);
+            line-height: 1.8;
+        }
+
+        /* Final CTA */
+        .final-cta {
+            padding: 8rem 5%;
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--secondary-dark) 100%);
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .cta-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 2rem;
+            border: 4px solid var(--gold);
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--orange) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--primary-dark);
+            font-weight: 800;
+        }
+
+        .cta-title {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .cta-subtitle {
+            font-size: 1.3rem;
+            color: var(--gray);
+            margin-bottom: 3rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-dark);
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+            padding: 3rem 5%;
+            text-align: center;
+            color: var(--gray);
+        }
+
+        .footer-logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .process-steps,
+            .usp-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .process-steps,
+            .usp-grid,
+            .options-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-container {
+                padding: 2rem;
+            }
+
+            nav {
+                padding: 1rem 5%;
+            }
+
+            .logo-nav {
+                font-size: 1.2rem;
+            }
+
+            .nav-cta {
+                padding: 0.6rem 1.5rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo-nav">HOPE CONNECTS</div>
+        <a href="#form" class="nav-cta">Plan je project</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Je droomverbouwing. Perfect uitgevoerd.</h1>
+                <p>Van ontwerp tot oplevering. Wij regelen alles. Transparant, betrouwbaar en zonder verrassingen.</p>
+                <div class="hero-buttons">
+                    <a href="#form" class="btn-primary">Plan je project</a>
+                    <a href="#portfolio" class="btn-secondary">Bekijk projecten</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">250+</span>
+                        <span class="stat-label">Verbouwingen</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">4.9/5</span>
+                        <span class="stat-label">Gemiddelde score</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Transparantie</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Badges -->
+    <section class="trust-badges">
+        <div class="badge">
+            <div class="badge-icon">🏆</div>
+            <div class="badge-text">Erkende partners</div>
+        </div>
+        <div class="badge">
+            <div class="badge-icon">⚡</div>
+            <div class="badge-text">Snelle respons</div>
+        </div>
+        <div class="badge">
+            <div class="badge-icon">💰</div>
+            <div class="badge-text">Eerlijke prijzen</div>
+        </div>
+        <div class="badge">
+            <div class="badge-icon">🛡️</div>
+            <div class="badge-text">Volledige garantie</div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process-section">
+        <div class="section-header">
+            <div class="section-subtitle">Ons proces</div>
+            <h2 class="section-title">Van idee tot werkelijkheid in 3 stappen</h2>
+            <p class="section-description">Simpel, transparant en zonder gedoe. Zo werken wij.</p>
+        </div>
+        <div class="process-steps">
+            <div class="process-card">
+                <div class="process-number">1</div>
+                <div class="process-image">💬</div>
+                <h3 class="process-title">Intake gesprek</h3>
+                <p class="process-description">We luisteren naar je wensen, budget en planning. Geen verplichtingen, alleen goede adviezen.</p>
+            </div>
+            <div class="process-card">
+                <div class="process-number">2</div>
+                <div class="process-image">📋</div>
+                <h3 class="process-title">Offerte op maat</h3>
+                <p class="process-description">Transparante prijs, geen verrassingen. Je weet precies waar je aan toe bent voordat we starten.</p>
+            </div>
+            <div class="process-card">
+                <div class="process-number">3</div>
+                <div class="process-image">✨</div>
+                <h3 class="process-title">Perfect resultaat</h3>
+                <p class="process-description">Je nieuwe ruimte, precies zoals je wilde. Opgeleverd op tijd en binnen budget.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio-section" id="portfolio">
+        <div class="section-header">
+            <div class="section-subtitle">Ons werk</div>
+            <h2 class="section-title">Recente projecten</h2>
+            <p class="section-description">Van gedateerd naar droomruimte. Bekijk wat we voor onze klanten realiseerden.</p>
+        </div>
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <div class="portfolio-images">
+                    <div class="before-after before">
+                        <span class="before-label">VOOR</span>
+                        <span style="position: relative;">🏚️</span>
+                    </div>
+                    <div class="before-after after">
+                        <span class="after-label">NA</span>
+                        <span style="position: relative;">✨</span>
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <h3 class="portfolio-title">Keuken totaalrenovatie</h3>
+                    <p class="portfolio-details">Sint-Michiels, Brugge • 6 weken</p>
+                    <div class="portfolio-price">€42.000</div>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <div class="portfolio-images">
+                    <div class="before-after before">
+                        <span class="before-label">VOOR</span>
+                        <span style="position: relative;">🚿</span>
+                    </div>
+                    <div class="before-after after">
+                        <span class="after-label">NA</span>
+                        <span style="position: relative;">💎</span>
+                    </div>
+                </div>
+                <div class="portfolio-info">
+                    <h3 class="portfolio-title">Luxe badkamer make-over</h3>
+                    <p class="portfolio-details">Assebroek, Brugge • 3 weken</p>
+                    <div class="portfolio-price">€28.500</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials-section">
+        <div class="section-header">
+            <div class="section-subtitle">Reviews</div>
+            <h2 class="section-title">Wat onze klanten zeggen</h2>
+        </div>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p class="testimonial-text">"Vanaf dag 1 professioneel. Geen verrassing in de prijs. Het resultaat overtrof onze verwachtingen. We zouden het zo weer doen."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">ST</div>
+                    <div class="author-info">
+                        <div class="author-name">Sara & Tom</div>
+                        <div class="author-project">Totale renovatie, Sint-Michiels</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p class="testimonial-text">"Ik was sceptisch over verbouwingen, maar Hope Connects maakte het makkelijk. Duidelijke communicatie, eerlijke prijzen. Aanrader!"</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">JV</div>
+                    <div class="author-info">
+                        <div class="author-name">Jan Vermeulen</div>
+                        <div class="author-project">Keuken renovatie, Brugge</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p class="testimonial-text">"Snelle respons, professioneel team, en het resultaat is prachtig. Onze badkamer is nu ons favoriete plekje in huis."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">MD</div>
+                    <div class="author-info">
+                        <div class="author-name">Marie Dupont</div>
+                        <div class="author-project">Badkamer make-over, Assebroek</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- USP Section -->
+    <section class="usp-section">
+        <div class="section-header">
+            <div class="section-subtitle">Waarom ons kiezen</div>
+            <h2 class="section-title">Wij maken het verschil</h2>
+        </div>
+        <div class="usp-grid">
+            <div class="usp-card">
+                <div class="usp-icon">🏆</div>
+                <h3 class="usp-title">Top aannemers</h3>
+                <p class="usp-description">We werken enkel met bewezen, betrouwbare professionals</p>
+            </div>
+            <div class="usp-card">
+                <div class="usp-icon">💰</div>
+                <h3 class="usp-title">Transparante prijzen</h3>
+                <p class="usp-description">Wat je ziet is wat je krijgt. Geen verborgen kosten.</p>
+            </div>
+            <div class="usp-card">
+                <div class="usp-icon">⏱️</div>
+                <h3 class="usp-title">Snelle respons</h3>
+                <p class="usp-description">Binnen 24 uur een offerte. Geen weken wachten.</p>
+            </div>
+            <div class="usp-card">
+                <div class="usp-icon">🛡️</div>
+                <h3 class="usp-title">Garantie</h3>
+                <p class="usp-description">Al onze projecten hebben volledige garantie</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Form Section -->
+    <section class="form-section" id="form">
+        <div class="section-header">
+            <div class="section-subtitle">Start je project</div>
+            <h2 class="section-title">Vertel ons over je verbouwing</h2>
+            <p class="section-description">We bellen je binnen 24 uur voor een vrijblijvend gesprek. Geen verplichtingen, alleen goede adviezen.</p>
+        </div>
+        <div class="form-container">
+            <div class="progress-container">
+                <div class="progress-steps">
+                    <span class="progress-step active">Project type</span>
+                    <span class="progress-step">Budget</span>
+                    <span class="progress-step">Planning</span>
+                    <span class="progress-step">Contact</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress" style="width: 25%"></div>
+                </div>
+            </div>
+
+            <form id="leadForm">
+                <!-- Step 1 -->
+                <div class="form-step active" data-step="1">
+                    <h2 class="question-title">Wat wil je verbouwen?</h2>
+                    <div class="options-grid">
+                        <div class="option-card" data-value="keuken">
+                            <div class="option-icon">🏠</div>
+                            <div class="option-label">Keuken</div>
+                        </div>
+                        <div class="option-card" data-value="badkamer">
+                            <div class="option-icon">🚿</div>
+                            <div class="option-label">Badkamer</div>
+                        </div>
+                        <div class="option-card" data-value="aanbouw">
+                            <div class="option-icon">🏗️</div>
+                            <div class="option-label">Aanbouw</div>
+                        </div>
+                        <div class="option-card" data-value="renovatie">
+                            <div class="option-icon">🔨</div>
+                            <div class="option-label">Totale renovatie</div>
+                        </div>
+                    </div>
+                    <input type="hidden" id="project_type" name="project_type" required>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="form-step" data-step="2">
+                    <h2 class="question-title">Wat is je budget?</h2>
+                    <div class="slider-container">
+                        <div class="budget-display">
+                            <span id="budgetValue">€25.000</span>
+                        </div>
+                        <input type="range" id="budgetSlider" min="0" max="4" step="1" value="2" class="budget-slider">
+                        <div class="slider-labels">
+                            <span>< €10K</span>
+                            <span>€10-25K</span>
+                            <span>€25-50K</span>
+                            <span>€50-75K</span>
+                            <span>€75K+</span>
+                        </div>
+                    </div>
+                    <input type="hidden" id="budget" name="budget" required>
+                    <div class="button-group">
+                        <button type="button" class="btn btn-back" onclick="prevStep()">← Terug</button>
+                        <button type="button" class="btn btn-next" onclick="confirmBudget()">Volgende →</button>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="form-step" data-step="3">
+                    <h2 class="question-title">Wanneer wil je starten?</h2>
+                    <div class="options-grid">
+                        <div class="option-card" data-value="deze-maand">
+                            <div class="option-label">Deze maand</div>
+                        </div>
+                        <div class="option-card" data-value="1-3-maanden">
+                            <div class="option-label">1-3 maanden</div>
+                        </div>
+                        <div class="option-card" data-value="3+-maanden">
+                            <div class="option-label">Over 3+ maanden</div>
+                        </div>
+                        <div class="option-card" data-value="flexibel">
+                            <div class="option-label">Flexibel</div>
+                        </div>
+                    </div>
+                    <input type="hidden" id="timing" name="timing" required>
+                    <div class="button-group">
+                        <button type="button" class="btn btn-back" onclick="prevStep()">← Terug</button>
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="form-step" data-step="4">
+                    <h2 class="question-title">Waar mogen we je bereiken?</h2>
+                    <div class="input-group">
+                        <label for="name">Naam</label>
+                        <input type="text" id="name" name="name" placeholder="Je volledige naam" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="je@email.com" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="phone">Telefoonnummer</label>
+                        <input type="tel" id="phone" name="phone" placeholder="+32 ..." required>
+                    </div>
+                    <div class="input-group">
+                        <label for="postcode">Postcode</label>
+                        <input type="text" id="postcode" name="postcode" placeholder="8000" required>
+                    </div>
+                    <div class="button-group">
+                        <button type="button" class="btn btn-back" onclick="prevStep()">← Terug</button>
+                        <button type="submit" class="btn btn-next">Plan mijn project →</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="section-header">
+            <div class="section-subtitle">Veelgestelde vragen</div>
+            <h2 class="section-title">Nog vragen?</h2>
+        </div>
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Wat kost een gemiddelde verbouwing?</span>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Dat hangt volledig af van je project. Een keukrenverbouwing start vanaf €15.000, een badkamer vanaf €10.000, en een totaalrenovatie vanaf €50.000. Na ons intakegesprek krijg je een transparante offerte op maat.
+                    </div>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Hoe lang duurt het proces?</span>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Een keuken of badkamer verbouwing duurt gemiddeld 3-6 weken. Een totaalrenovatie 2-4 maanden. We plannen alles van tevoren in en houden je op de hoogte van de voortgang.
+                    </div>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Moet ik zelf materialen kiezen?</span>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Nee, wij adviseren je graag. We laten je verschillende opties zien binnen je budget en stijl. Natuurlijk mag je ook zelf materialen kiezen als je dat wilt.
+                    </div>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Wat als ik niet tevreden ben?</span>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Al onze projecten hebben volledige garantie. Als er iets niet klopt, lossen we het op. Je betaalt pas volledig als je 100% tevreden bent met het resultaat.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <div class="cta-content">
+            <div class="cta-avatar">HC</div>
+            <h2 class="cta-title">Klaar om te starten?</h2>
+            <p class="cta-subtitle">"Ik help je graag verder. Plan vandaag nog een vrijblijvend gesprek."</p>
+            <a href="#form" class="btn-primary">Plan je project →</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-logo">HOPE CONNECTS</div>
+        <p>Premium verbouwingen in Brugge en omstreken</p>
+        <p style="margin-top: 1rem; font-size: 0.85rem;">© 2025 Hope Connects. Alle rechten voorbehouden.</p>
+    </footer>
+
+    <script>
+        // Form logic
+        let currentStep = 1;
+        const totalSteps = 4;
+
+        const budgetRanges = ['<10k', '10-25k', '25-50k', '50-75k', '75k+'];
+        const budgetLabels = ['€5.000', '€17.500', '€37.500', '€62.500', '€100.000+'];
+
+        // Budget slider
+        const budgetSlider = document.getElementById('budgetSlider');
+        const budgetValue = document.getElementById('budgetValue');
+
+        if (budgetSlider) {
+            budgetSlider.addEventListener('input', function() {
+                const index = parseInt(this.value);
+                budgetValue.textContent = budgetLabels[index];
+            });
+        }
+
+        function confirmBudget() {
+            const index = parseInt(budgetSlider.value);
+            document.getElementById('budget').value = budgetRanges[index];
+            nextStep();
+        }
+
+        // Handle option card clicks
+        document.querySelectorAll('.option-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const step = this.closest('.form-step');
+                const cards = step.querySelectorAll('.option-card');
+                cards.forEach(c => c.classList.remove('selected'));
+                this.classList.add('selected');
+                
+                const hiddenInput = step.querySelector('input[type="hidden"]');
+                hiddenInput.value = this.dataset.value;
+                
+                setTimeout(() => nextStep(), 400);
+            });
+        });
+
+        function nextStep() {
+            if (currentStep < totalSteps) {
+                document.querySelector(`[data-step="${currentStep}"]`).classList.remove('active');
+                currentStep++;
+                document.querySelector(`[data-step="${currentStep}"]`).classList.add('active');
+                updateProgress();
+            }
+        }
+
+        function prevStep() {
+            if (currentStep > 1) {
+                document.querySelector(`[data-step="${currentStep}"]`).classList.remove('active');
+                currentStep--;
+                document.querySelector(`[data-step="${currentStep}"]`).classList.add('active');
+                updateProgress();
+            }
+        }
+
+        function updateProgress() {
+            const progress = (currentStep / totalSteps) * 100;
+            document.getElementById('progress').style.width = progress + '%';
+            
+            // Update step indicators
+            const steps = document.querySelectorAll('.progress-step');
+            steps.forEach((step, index) => {
+                if (index < currentStep) {
+                    step.classList.add('active');
+                } else {
+                    step.classList.remove('active');
+                }
+            });
+        }
+
+        // Form submission
+        document.getElementById('leadForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                project_type: document.getElementById('project_type').value,
+                budget: document.getElementById('budget').value,
+                timing: document.getElementById('timing').value,
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                postcode: document.getElementById('postcode').value,
+                timestamp: new Date().toISOString()
+            };
+
+            // Calculate lead score
+            let score = 0;
+            if (formData.budget === '75k+') score += 5;
+            else if (formData.budget === '50-75k') score += 5;
+            else if (formData.budget === '25-50k') score += 4;
+            else if (formData.budget === '10-25k') score += 3;
+            else score += 1;
+
+            if (formData.timing === 'deze-maand') score += 2;
+            else if (formData.timing === '1-3-maanden') score += 1;
+
+            formData.score = Math.min(score, 5);
+
+            console.log('Lead submitted:', formData);
+            
+            // Send to backend API
+            try {
+                const response = await fetch('/api/submit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    alert('🎉 Bedankt! We bellen je binnen 24 uur voor een vrijblijvend gesprek.\n\nCheck je email voor de bevestiging.');
+                } else {
+                    alert('Er ging iets mis. Probeer het opnieuw of bel ons op +32 50 123 456');
+                }
+            } catch (error) {
+                console.error('Submission error:', error);
+                alert('Er ging iets mis. Probeer het opnieuw of bel ons op +32 50 123 456');
+            }
+            
+            // Reset
+            this.reset();
+            currentStep = 1;
+            document.querySelectorAll('.form-step').forEach(step => step.classList.remove('active'));
+            document.querySelector('[data-step="1"]').classList.add('active');
+            updateProgress();
+        });
+
+        // FAQ Toggle
+        function toggleFAQ(element) {
+            const faqItem = element.parentElement;
+            faqItem.classList.toggle('active');
+        }
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards and sections
+        document.querySelectorAll('.process-card, .portfolio-item, .testimonial-card, .usp-card, .faq-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
