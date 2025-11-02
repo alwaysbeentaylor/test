@@ -1,7 +1,6 @@
-// Vercel Serverless Function - Submit Lead
-const AIRTABLE_API_KEY = 'pate6aMDOqGm8Cks2.2c8853d332a3a5354ffcb059e659f8568274b309801df1642b1d61440939782c';
-const AIRTABLE_BASE_ID = 'appEqYR1F9xWxa8OX';
-const AIRTABLE_TABLE_NAME = 'Projects';
+// Vercel Serverless Function - Submit Lead to Telegram
+const TELEGRAM_BOT_TOKEN = '8577513954:AAG3HpLwUl4t0cxqy5YOdxXwF6sbvEabbsM';
+const TELEGRAM_CHAT_ID = '1471110442';
 
 export default async function handler(req, res) {
     // Enable CORS
@@ -36,42 +35,52 @@ export default async function handler(req, res) {
                          formData.score === 4 ? 100 : 
                          formData.score === 3 ? 50 : 30;
         
-        // Save to Airtable
-        const airtableUrl = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${AIRTABLE_TABLE_NAME}`;
+        // Create Telegram message
+        const stars = '⭐'.repeat(formData.score);
+        const urgentFlag = formData.timing === 'deze-maand' ? '🔥 URGENT - WIL DEZE MAAND STARTEN!\n\n' : '';
         
-        const airtableResponse = await fetch(airtableUrl, {
+        const message = `
+🎉 NIEUWE LEAD!
+
+${urgentFlag}${stars} ${formData.score}-sterren lead
+💰 Waarde: €${leadValue}
+
+👤 Naam: ${formData.name}
+📧 Email: ${formData.email}
+📱 Telefoon: ${formData.phone}
+📍 Postcode: ${formData.postcode}
+
+🏠 Project: ${formData.project_type}
+💵 Budget: ${formData.budget}
+⏰ Timing: ${formData.timing}
+
+🔥 BEL NU!
+        `.trim();
+        
+        // Send to Telegram
+        const telegramUrl = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
+        
+        const telegramResponse = await fetch(telegramUrl, {
             method: 'POST',
             headers: {
-                'Authorization': `Bearer ${AIRTABLE_API_KEY}`,
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                fields: {
-                    'Naam': formData.name,
-                    'Email': formData.email,
-                    'Telefoon': formData.phone,
-                    'Postcode': formData.postcode,
-                    'Project Type': formData.project_type,
-                    'Budget': formData.budget,
-                    'Timing': formData.timing,
-                    'Score': formData.score,
-                    'Lead Value': leadValue
-                }
+                chat_id: TELEGRAM_CHAT_ID,
+                text: message,
+                parse_mode: 'HTML'
             })
         });
         
-        if (!airtableResponse.ok) {
-            const error = await airtableResponse.text();
-            console.error('Airtable error:', error);
-            throw new Error(`Airtable error: ${error}`);
+        if (!telegramResponse.ok) {
+            const error = await telegramResponse.text();
+            console.error('Telegram error:', error);
+            throw new Error(`Telegram error: ${error}`);
         }
-        
-        const result = await airtableResponse.json();
         
         return res.status(200).json({
             success: true,
-            message: 'Lead saved successfully',
-            leadId: result.id,
+            message: 'Lead verzonden naar Telegram',
             score: formData.score
         });
         
