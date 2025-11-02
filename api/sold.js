@@ -1,6 +1,6 @@
 // Vercel Serverless Function - Mark Lead as Sold
-const AIRTABLE_API_KEY = 'pate6aMDOqGm8Cks2.5700b6cfb406f4aa8d34a662533b79d978b10c8b73d211f7d511991ba29d9311';
-const AIRTABLE_BASE_ID = 'appmDILb3KWz1obrm';
+const AIRTABLE_API_KEY = 'pate6aMDOqGm8Cks2.2c8853d332a3a5354ffcb059e659f8568274b309801df1642b1d61440939782c';
+const AIRTABLE_BASE_ID = 'appEqYR1F9xWxa8OX';
 const AIRTABLE_TABLE_NAME = 'Projects';
 
 export default async function handler(req, res) {
