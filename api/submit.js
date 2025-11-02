@@ -55,8 +55,7 @@ export default async function handler(req, res) {
                     'Budget': formData.budget,
                     'Timing': formData.timing,
                     'Score': formData.score,
-                    'Lead Value': leadValue,
-                    'Status': 'Nieuw'
+                    'Lead Value': leadValue
                 }
             })
         });
@@ -64,7 +63,7 @@ export default async function handler(req, res) {
         if (!airtableResponse.ok) {
             const error = await airtableResponse.text();
             console.error('Airtable error:', error);
-            throw new Error('Failed to save to Airtable');
+            throw new Error(`Airtable error: ${error}`);
         }
         
         const result = await airtableResponse.json();
